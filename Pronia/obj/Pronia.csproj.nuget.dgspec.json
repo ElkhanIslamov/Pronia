@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Desktop\\Pronia\\Pronia\\Pronia.csproj": {}
+    "D:\\Рабочий стол\\Pronia\\Pronia\\Pronia.csproj": {}
   },
   "projects": {
-    "D:\\Desktop\\Pronia\\Pronia\\Pronia.csproj": {
+    "D:\\Рабочий стол\\Pronia\\Pronia\\Pronia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desktop\\Pronia\\Pronia\\Pronia.csproj",
+        "projectUniqueName": "D:\\Рабочий стол\\Pronia\\Pronia\\Pronia.csproj",
         "projectName": "Pronia",
-        "projectPath": "D:\\Desktop\\Pronia\\Pronia\\Pronia.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\Desktop\\Pronia\\Pronia\\obj\\",
+        "projectPath": "D:\\Рабочий стол\\Pronia\\Pronia\\Pronia.csproj",
+        "packagesPath": "C:\\Users\\Elkhan.Islamov\\.nuget\\packages\\",
+        "outputPath": "D:\\Рабочий стол\\Pronia\\Pronia\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Elkhan.Islamov\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,17 +34,16 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.33, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.33, )"
@@ -61,7 +60,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[6.0.17, )"
+              "version": "[6.0.18, )"
             }
           },
           "imports": [
@@ -83,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
