@@ -10358,19 +10358,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Elkhan.Islamov\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Рабочий стол\\Pronia\\Pronia\\Pronia.csproj",
+      "projectUniqueName": "D:\\Desktop\\New folder\\Pronia\\Pronia\\Pronia.csproj",
       "projectName": "Pronia",
-      "projectPath": "D:\\Рабочий стол\\Pronia\\Pronia\\Pronia.csproj",
-      "packagesPath": "C:\\Users\\Elkhan.Islamov\\.nuget\\packages\\",
-      "outputPath": "D:\\Рабочий стол\\Pronia\\Pronia\\obj\\",
+      "projectPath": "D:\\Desktop\\New folder\\Pronia\\Pronia\\Pronia.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\Desktop\\New folder\\Pronia\\Pronia\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Elkhan.Islamov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10390,6 +10390,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -10438,7 +10443,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

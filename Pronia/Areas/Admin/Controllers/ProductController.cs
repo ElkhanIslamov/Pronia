@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pronia.Areas.Admin.ViewModels.ProductViewModels;
 using Pronia.Contexts;
@@ -6,6 +7,7 @@ using Pronia.Models;
 
 namespace Pronia.Areas.Admin.Controllers;
 [Area("Admin")]
+[Authorize(Roles ="Admin,Moderator")]
 public class ProductController : Controller
 {
     private readonly ProniaDbContext _context;
@@ -26,6 +28,7 @@ public class ProductController : Controller
 
         return View(product);
     }
+    [Authorize(Roles ="User")]
     public async Task<IActionResult> Create()
     {
         ViewBag.Categories = await _context.Categories.ToListAsync(); 

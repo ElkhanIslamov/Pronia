@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Pronia.Helpers.Enums;
 using Pronia.Models;
 using Pronia.ViewModels;
 
@@ -41,6 +42,7 @@ public class UserController : Controller
             }
             return View();
         }
+       await _userManager.AddToRoleAsync(appUser,Roles.User.ToString());
         return RedirectToAction("Index", "Home");
     }
 }
