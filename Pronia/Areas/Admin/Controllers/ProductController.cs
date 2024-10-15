@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pronia.Areas.Admin.ViewModels.ProductViewModels;
 using Pronia.Contexts;
+using Pronia.Helpers.Extensions;
 using Pronia.Models;
 
 namespace Pronia.Areas.Admin.Controllers;
 [Area("Admin")]
+[Authorize(Roles = "Admin")]
 public class ProductController : Controller
 {
     private readonly ProniaDbContext _context;
@@ -16,7 +19,7 @@ public class ProductController : Controller
         _context = context;
         _webHostEnvironment = webHostEnvironment;
     }
-
+    [AllowAnonymous]
     public async Task<IActionResult> Index()
     {
         var product = await _context.Products
@@ -36,6 +39,14 @@ public class ProductController : Controller
     public async Task<IActionResult> Create(ProductCreateViewModel product)
     {
         ViewBag.Categories = await _context.Categories.ToListAsync();
+        if(product.Image.CheckFileSize(3000))
+        {
+            ModelState.AddModelError("Image", "File Size Limit Exceeded");
+        }
+        if(product.Image.CheckFileType("iamge/"))
+        {
+            ModelState.AddModelError("Image", "File type must be jpg");
+        }
         string fileName = $"{Guid.NewGuid()}-{product.Image.FileName}";
         string path = Path.Combine(_webHostEnvironment.WebRootPath,"assets","img","product",fileName);
         using(FileStream stream = new FileStream(path,FileMode.Create))
