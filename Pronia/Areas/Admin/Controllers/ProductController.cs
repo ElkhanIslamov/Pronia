@@ -8,7 +8,11 @@ using Pronia.Models;
 
 namespace Pronia.Areas.Admin.Controllers;
 [Area("Admin")]
+<<<<<<< HEAD
 [Authorize(Roles = "Admin")]
+=======
+[Authorize(Roles ="Admin,Moderator")]
+>>>>>>> 7da07ac27062cb0bdbab6832752d563215280c78
 public class ProductController : Controller
 {
     private readonly ProniaDbContext _context;
@@ -29,6 +33,7 @@ public class ProductController : Controller
 
         return View(product);
     }
+    [Authorize(Roles ="User")]
     public async Task<IActionResult> Create()
     {
         ViewBag.Categories = await _context.Categories.ToListAsync(); 

@@ -2,6 +2,10 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+<<<<<<< HEAD
+=======
+using NuGet.Protocol;
+>>>>>>> 7da07ac27062cb0bdbab6832752d563215280c78
 using Pronia.Helpers.Enums;
 using Pronia.Models;
 using Pronia.ViewModels;
@@ -51,11 +55,19 @@ public class AuthController : Controller
             }
         }
         var signInManager = await _signInManager.PasswordSignInAsync(user,loginViewModel.Password,loginViewModel.RememberMe,true);
+<<<<<<< HEAD
         if(signInManager.IsLockedOut)
         {
             ModelState.AddModelError("", "User is blocked...");
         }
 
+=======
+        if(!signInManager.IsLockedOut) 
+        {
+            ModelState.AddModelError("", "Blok edildi...");
+            return View();  
+        }
+>>>>>>> 7da07ac27062cb0bdbab6832752d563215280c78
         if (!signInManager.Succeeded)
         {
             ModelState.AddModelError("", "username/email or password is incorrect");
@@ -75,6 +87,7 @@ public class AuthController : Controller
 
         return RedirectToAction("Index", "Home");   
     }
+<<<<<<< HEAD
     public IActionResult ForgotPassword()
     {
         return View();
@@ -144,4 +157,14 @@ public class AuthController : Controller
     //    return Content("Roles created");
     //}
 
+=======
+    public async Task<IActionResult> CreateRole()
+    {
+        foreach (var userRole in Enum.GetNames(typeof(Roles)))
+        {
+            await _roleManager.CreateAsync(new IdentityRole { Name = userRole });
+        }
+        return View();
+    }
+>>>>>>> 7da07ac27062cb0bdbab6832752d563215280c78
 }

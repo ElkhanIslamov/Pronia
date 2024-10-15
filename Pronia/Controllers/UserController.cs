@@ -42,7 +42,11 @@ public class UserController : Controller
             }
             return View();
         }
+<<<<<<< HEAD
         await _userManager.AddToRoleAsync(appUser, Roles.User.ToString()); 
+=======
+       await _userManager.AddToRoleAsync(appUser,Roles.User.ToString());
+>>>>>>> 7da07ac27062cb0bdbab6832752d563215280c78
         return RedirectToAction("Index", "Home");
     }
 }
