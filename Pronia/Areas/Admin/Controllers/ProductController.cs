@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Pronia.Areas.Admin.ViewModels.ProductViewModels;
 using Pronia.Contexts;
+using Pronia.Helpers.Extensions;
 using Pronia.Models;
 
 namespace Pronia.Areas.Admin.Controllers;
@@ -36,6 +37,15 @@ public class ProductController : Controller
     public async Task<IActionResult> Create(ProductCreateViewModel product)
     {
         ViewBag.Categories = await _context.Categories.ToListAsync();
+
+        if (product.Image.CheckFileSize(3000))
+        {
+            ModelState.AddModelError("Image", "File size limit exceeded");
+        }
+        if(product.Image.CheckFileType("image/"))
+        {
+            ModelState.AddModelError("Image", "File type Must be image file");
+        }
         string fileName = $"{Guid.NewGuid()}-{product.Image.FileName}";
         string path = Path.Combine(_webHostEnvironment.WebRootPath,"assets","img","product",fileName);
         using(FileStream stream = new FileStream(path,FileMode.Create))

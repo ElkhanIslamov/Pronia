@@ -13,6 +13,10 @@
           type="image/x-icon"
           href="~/assets/images/favicon.ico" />
 
+
+
+
+
     <!-- CSS
     ============================================ -->
 
@@ -125,12 +129,29 @@
                                             </button>
                                             <ul class="dropdown-menu"
                                                 aria-labelledby="settingButton">
+                                                @if (User.Identity.IsAuthenticated)
+                                                {
+                                                    <li>
+                                                        <a class="dropdown-item" asp-controller="Home" asp-action="Index">@User.Identity.Name</a>
+                                                    </li>
+                                                }
+                                                @if (User.Identity.IsAuthenticated)
+                                                {
+                                                    <li>
+                                                        <a class="dropdown-item" asp-controller="Auth" asp-action="LogOut">Logout</a>
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li>
+                                                        <a class="dropdown-item" asp-controller="Auth" asp-action="Login">Login</a>
+                                                    </li>
                                                 <li>
-                                                    <a class="dropdown-item" href="my-account.html">My account</a>
+                                                    <a class="dropdown-item" asp-controller="User" asp-action="Register">Register</a>
                                                 </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="login-register.html">Login | Register</a>
-                                                </li>
+                                                }
+                                                 
+
                                             </ul>
                                         </li>
                                         <li class="d-none d-lg-block">

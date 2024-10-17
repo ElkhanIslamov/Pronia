@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ANOTK4seREzD1nkOQy+ECjtk3ELB7T/tu9Ak/1rzWqY=",
+  "Hash": "NEaVZdbcw+QQS+VQd8pcqHsXU+2x2BqXV8HSTWmVlto=",
   "Source": "Pronia",
   "BasePath": "_content/Pronia",
   "Mode": "Default",
@@ -5050,6 +5050,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\vendor\\modernizr-3.11.2.min.js"
+    },
+    {
+      "Identity": "D:\\Desktop\\Pronia\\Pronia\\wwwroot\\assets\\templates\\index.html",
+      "SourceId": "Pronia",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Desktop\\Pronia\\Pronia\\wwwroot\\",
+      "BasePath": "_content/Pronia",
+      "RelativePath": "assets/templates/index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\templates\\index.html"
     }
   ]
 }
