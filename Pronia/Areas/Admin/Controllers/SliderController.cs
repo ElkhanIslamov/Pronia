@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pronia.Contexts;
 using Pronia.Models;
 
 namespace Pronia.Areas.Admin.Controllers;
 [Area("Admin")]
+[Authorize]
 public class SliderController : Controller
 {
     private readonly ProniaDbContext _context;
@@ -31,6 +33,7 @@ public class SliderController : Controller
 
         return RedirectToAction("Index");   
     }
+    [AllowAnonymous]
     public async Task<IActionResult>Detail(int id)
     {
         var slider = await _context.Sliders.SingleOrDefaultAsync(s =>s.Id ==id);

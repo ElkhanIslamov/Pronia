@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Desktop\\Pronia\\Pronia\\Pronia.csproj": {}
+    "D:\\Desktop\\New folder\\Pronia\\Pronia\\Pronia.csproj": {}
   },
   "projects": {
-    "D:\\Desktop\\Pronia\\Pronia\\Pronia.csproj": {
+    "D:\\Desktop\\New folder\\Pronia\\Pronia\\Pronia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desktop\\Pronia\\Pronia\\Pronia.csproj",
+        "projectUniqueName": "D:\\Desktop\\New folder\\Pronia\\Pronia\\Pronia.csproj",
         "projectName": "Pronia",
-        "projectPath": "D:\\Desktop\\Pronia\\Pronia\\Pronia.csproj",
+        "projectPath": "D:\\Desktop\\New folder\\Pronia\\Pronia\\Pronia.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\Desktop\\Pronia\\Pronia\\obj\\",
+        "outputPath": "D:\\Desktop\\New folder\\Pronia\\Pronia\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,10 +45,13 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+<<<<<<< HEAD
             "MailKit": {
               "target": "Package",
               "version": "[4.8.0, )"
             },
+=======
+>>>>>>> 57991215b1568482bb7c3fa294a1a116d2b1b740
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.33, )"
@@ -70,10 +73,13 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.18, )"
+<<<<<<< HEAD
             },
             "MimeKit": {
               "target": "Package",
               "version": "[4.8.0, )"
+=======
+>>>>>>> 57991215b1568482bb7c3fa294a1a116d2b1b740
             }
           },
           "imports": [

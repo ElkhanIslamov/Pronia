@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pronia.Areas.Admin.ViewModels.ProductViewModels;
 using Pronia.Contexts;
@@ -7,6 +8,11 @@ using Pronia.Models;
 
 namespace Pronia.Areas.Admin.Controllers;
 [Area("Admin")]
+<<<<<<< HEAD
+[Authorize(Roles = "Admin")]
+=======
+[Authorize(Roles ="Admin,Moderator")]
+>>>>>>> 7da07ac27062cb0bdbab6832752d563215280c78
 public class ProductController : Controller
 {
     private readonly ProniaDbContext _context;
@@ -17,7 +23,7 @@ public class ProductController : Controller
         _context = context;
         _webHostEnvironment = webHostEnvironment;
     }
-
+    [AllowAnonymous]
     public async Task<IActionResult> Index()
     {
         var product = await _context.Products
@@ -27,6 +33,7 @@ public class ProductController : Controller
 
         return View(product);
     }
+    [Authorize(Roles ="User")]
     public async Task<IActionResult> Create()
     {
         ViewBag.Categories = await _context.Categories.ToListAsync(); 
@@ -37,6 +44,7 @@ public class ProductController : Controller
     public async Task<IActionResult> Create(ProductCreateViewModel product)
     {
         ViewBag.Categories = await _context.Categories.ToListAsync();
+<<<<<<< HEAD
 
         if (product.Image.CheckFileSize(3000))
         {
@@ -45,6 +53,15 @@ public class ProductController : Controller
         if(product.Image.CheckFileType("image/"))
         {
             ModelState.AddModelError("Image", "File type Must be image file");
+=======
+        if(product.Image.CheckFileSize(3000))
+        {
+            ModelState.AddModelError("Image", "File Size Limit Exceeded");
+        }
+        if(product.Image.CheckFileType("iamge/"))
+        {
+            ModelState.AddModelError("Image", "File type must be jpg");
+>>>>>>> 57991215b1568482bb7c3fa294a1a116d2b1b740
         }
         string fileName = $"{Guid.NewGuid()}-{product.Image.FileName}";
         string path = Path.Combine(_webHostEnvironment.WebRootPath,"assets","img","product",fileName);

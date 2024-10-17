@@ -1,8 +1,12 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "gTbBIGuFs8fRfT9X5+zFZdRgqXQcCUp+kt56n7zM9krlPNXXw2q8+rMU/AcnbK+LKCWjBWcdSAxUD1xfbTZJ4w==",
+=======
+  "dgSpecHash": "DeCPiODKsezC+fEmTCnHqaoYZVKxh4jkcoqOZwz+QsC1VjlSEH/OplBcD8ODJ9cDZQdWPIIF5yS4zLH7avy3Eg==",
+>>>>>>> 57991215b1568482bb7c3fa294a1a116d2b1b740
   "success": true,
-  "projectFilePath": "D:\\Desktop\\Pronia\\Pronia\\Pronia.csproj",
+  "projectFilePath": "D:\\Desktop\\New folder\\Pronia\\Pronia\\Pronia.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
@@ -162,7 +166,11 @@
     "C:\\Users\\User\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.diagnostics.tracing\\4.3.0\\system.diagnostics.tracing.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
+<<<<<<< HEAD
     "C:\\Users\\User\\.nuget\\packages\\system.formats.asn1\\8.0.1\\system.formats.asn1.8.0.1.nupkg.sha512",
+=======
+    "C:\\Users\\User\\.nuget\\packages\\system.formats.asn1\\6.0.1\\system.formats.asn1.6.0.1.nupkg.sha512",
+>>>>>>> 57991215b1568482bb7c3fa294a1a116d2b1b740
     "C:\\Users\\User\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.globalization.calendars\\4.3.0\\system.globalization.calendars.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.globalization.extensions\\4.3.0\\system.globalization.extensions.4.3.0.nupkg.sha512",
