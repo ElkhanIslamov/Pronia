@@ -7,7 +7,7 @@ using Pronia.Models;
 
 namespace Pronia.Areas.Admin.Controllers;
 [Area("Admin")]
-[Authorize(Roles ="Admin,Moderator")]
+//[Authorize(Roles ="Admin,Moderator")]
 public class ProductController : Controller
 {
     private readonly ProniaDbContext _context;
@@ -24,11 +24,12 @@ public class ProductController : Controller
         var product = await _context.Products
             .AsNoTracking()
             .Include(p=>p.Category)
+            .Where(p=>!p.IsDeleted)
             .ToListAsync();
 
         return View(product);
     }
-    [Authorize(Roles ="User")]
+  //  [Authorize(Roles ="User")]
     public async Task<IActionResult> Create()
     {
         ViewBag.Categories = await _context.Categories.ToListAsync(); 
@@ -40,7 +41,7 @@ public class ProductController : Controller
     {
         ViewBag.Categories = await _context.Categories.ToListAsync();
         string fileName = $"{Guid.NewGuid()}-{product.Image.FileName}";
-        string path = Path.Combine(_webHostEnvironment.WebRootPath,"assets","img","product",fileName);
+        string path = Path.Combine(_webHostEnvironment.WebRootPath,"assets","images","website-images",fileName);
         using(FileStream stream = new FileStream(path,FileMode.Create))
         {
             await product.Image.CopyToAsync(stream);
@@ -104,23 +105,23 @@ public class ProductController : Controller
 
         return RedirectToAction(nameof(Index));
     }
-    public async Task<IActionResult>Delete(int id)
-    {
-        var product = await _context.Products.AsNoTracking().FirstOrDefaultAsync(p=>p.Id== id & !p.IsDeleted);
-        if(product == null) return NotFound();
+    //public async Task<IActionResult>Delete(int id)
+    //{
+    //    var product = await _context.Products.AsNoTracking().FirstOrDefaultAsync(p=>p.Id== id & !p.IsDeleted);
+    //    if(product == null) return NotFound();
 
-        return View(product);
-    }
+    //    return View(product);
+    //}
     [HttpPost]
-    [ValidateAntiForgeryToken]
-    [ActionName(nameof(Delete))]
-    public async Task<IActionResult>DeleteProduct(int id)
+   public async Task<IActionResult>Delete(int id)
     {
         var product = await _context.Products.FirstOrDefaultAsync(p=>p.Id== id & !p.IsDeleted); 
         if(product == null) return NotFound();
+
          _context.Products.Remove(product);
         await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+
+        return Json(new {message="Your product has been deleted"});
 
     }
    
