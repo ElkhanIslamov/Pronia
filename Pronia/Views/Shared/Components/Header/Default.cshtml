@@ -2,7 +2,8 @@
 @{
     Layout = null;
 }
-@model Dictionary<string,string>
+@model HeaderViewModel
+   
 <header class="main-header-area">
     <div class="header-top bg-pronia-primary d-none d-lg-block">
         <div class="container">
@@ -54,18 +55,17 @@
     </div>
     <div class="header-middle py-30">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center">                           
                 <div class="col-lg-12">
                     <div class="header-middle-wrap position-relative">
+                                                                         
                         <div class="header-contact d-none d-lg-flex">
                             <i class="pe-7s-call"></i>
-                            <a href="tel://+00-123-456-789">@Model["HeaderContact"]</a>
+                            <a href="tel://+00-123-456-789">@Model.Settings["HeaderContact"]</a>
                         </div>
-
                         <a asp-controller="Home">
-                            <img src="~/assets/images/logo/@Model["Logo"] alt="Header Logo" />
+                            <img src="~/assets/images/logo/dark.png" alt="Header Logo" />
                         </a>
-
                         <div class="header-right">
                             <ul>
                                 <li>
@@ -85,12 +85,13 @@
                                             aria-expanded="false">
                                         <i class="pe-7s-users"></i>
                                     </button>
+                                                                      
                                     <ul class="dropdown-menu"
                                         aria-labelledby="settingButton">
                                         <li>
                                             @if (User.Identity.IsAuthenticated)
                                             {
-                                                <a class="dropdown-item" href="my-account.html">@User.Identity.Name</a>
+                                                <a class="dropdown-item" asp-action="Profile" asp-controller="User">@User.Identity.Name</a>
 
                                             }
                                         </li>
@@ -112,18 +113,23 @@
                                             </li>
                                         }
                                     </ul>
+                                        
+                                    
                                 </li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
                                 <li class="d-none d-lg-block">
                                     <a href="wishlist.html">
                                         <i class="pe-7s-like"></i>
                                     </a>
-                                </li>
+                                </li>                                                             
                                 <li class="minicart-wrap me-3 me-lg-0">
                                     <a href="#miniCart" class="minicart-btn toolbar-btn">
                                         <i class="pe-7s-shopbag"></i>
-                                        <span class="quantity">3</span>
+                                        <span class="quantity" id="total-count">@Model.TotalCount</span>
                                     </a>
                                 </li>
+                                }
                                 <li class="mobile-menu_wrap d-block d-lg-none">
                                     <a href="#mobileMenu"
                                        class="mobile-menu_btn toolbar-btn pl-0">
@@ -134,6 +140,8 @@
                         </div>
                     </div>
                 </div>
+                    
+                
             </div>
         </div>
     </div>
@@ -417,11 +425,29 @@
                                     <ul class="dropdown-menu"
                                         aria-labelledby="stickysettingButton">
                                         <li>
-                                            <a class="dropdown-item" href="my-account.html">My account</a>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <a class="dropdown-item" asp-action="Profile" asp-controller="User">@User.Identity.Name</a>
+
+                                            }
                                         </li>
-                                        <li>
-                                            <a class="dropdown-item" href="login-register.html">Login | Register</a>
-                                        </li>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <li>
+                                                <a class="dropdown-item" asp-controller="Auth" asp-action="Logout">Logout</a>
+                                            </li>
+
+                                        }
+                                        else
+                                        {
+
+                                            <li>
+                                                <a class="dropdown-item" asp-controller="Auth" asp-action="Login">Login</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" asp-controller="User" asp-action="Register">Register</a>
+                                            </li>
+                                        }
                                     </ul>
                                 </li>
                                 <li class="d-none d-lg-block">
@@ -777,6 +803,8 @@
             </div>
         </div>
     </div>
+    @if (User.Identity.IsAuthenticated)
+    {
     <div class="offcanvas-minicart_wrapper" id="miniCart">
         <div class="offcanvas-body">
             <div class="minicart-content">
@@ -792,7 +820,9 @@
                            data-tippy-theme="sharpborder"></i>
                     </a>
                 </div>
-                <ul class="minicart-list">
+                    <ul class="minicart-list" id="basket-items">
+                    @foreach(var item in Model.BasketItems)
+                    {
                     <li class="minicart-product">
                         <a class="product-item_remove" href="#">
                             <i class="pe-7s-close"
@@ -806,64 +836,23 @@
                         <a href="single-product-variable.html"
                            class="product-item_img">
                             <img class="img-full"
-                                 src="~/assets/images/product/small-size/2-1-70x78.png"
+                                 src="~/assets/images/website-images/@item.Product.Image"
                                  alt="Product Image" />
                         </a>
                         <div class="product-item_content">
                             <a class="product-item_title"
-                               href="single-product-variable.html">American Marigold</a>
-                            <span class="product-item_quantity">1 x $23.45</span>
+                               href="single-product-variable.html">@item.Product.Name</a>
+                            <span class="product-item_quantity">@item.Count x @item.Product.Price</span>
                         </div>
                     </li>
-                    <li class="minicart-product">
-                        <a class="product-item_remove" href="#">
-                            <i class="pe-7s-close"
-                               data-tippy="Remove"
-                               data-tippy-inertia="true"
-                               data-tippy-animation="shift-away"
-                               data-tippy-delay="50"
-                               data-tippy-arrow="true"
-                               data-tippy-theme="sharpborder"></i>
-                        </a>
-                        <a href="single-product-variable.html"
-                           class="product-item_img">
-                            <img class="img-full"
-                                 src="~/assets/images/product/small-size/2-2-70x78.png"
-                                 alt="Product Image" />
-                        </a>
-                        <div class="product-item_content">
-                            <a class="product-item_title"
-                               href="single-product-variable.html">Black Eyed Susan</a>
-                            <span class="product-item_quantity">1 x $25.45</span>
-                        </div>
-                    </li>
-                    <li class="minicart-product">
-                        <a class="product-item_remove" href="#">
-                            <i class="pe-7s-close"
-                               data-tippy="Remove"
-                               data-tippy-inertia="true"
-                               data-tippy-animation="shift-away"
-                               data-tippy-delay="50"
-                               data-tippy-arrow="true"
-                               data-tippy-theme="sharpborder"></i>
-                        </a>
-                        <a href="single-product-variable.html"
-                           class="product-item_img">
-                            <img class="img-full"
-                                 src="~/assets/images/product/small-size/2-3-70x78.png"
-                                 alt="Product Image" />
-                        </a>
-                        <div class="product-item_content">
-                            <a class="product-item_title"
-                               href="single-product-variable.html">Bleeding Heart</a>
-                            <span class="product-item_quantity">1 x $30.45</span>
-                        </div>
-                    </li>
-                </ul>
+                        
+                    }
+                   
+                </ul>                       
             </div>
             <div class="minicart-item_total">
                 <span>Subtotal</span>
-                <span class="ammount">$79.35</span>
+                <span class="ammount" id="subtotal">@Model.TotalPrice</span>
             </div>
             <div class="group-btn_wrap d-grid gap-2">
                 <a href="cart.html" class="btn btn-dark">View Cart</a>
@@ -871,5 +860,8 @@
             </div>
         </div>
     </div>
+        
+    }
     <div class="global-overlay"></div>
 </header>
+

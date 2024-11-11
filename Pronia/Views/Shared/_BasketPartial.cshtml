@@ -1,0 +1,31 @@
+﻿@using Pronia.Models
+
+@model List<BasketItem>
+
+@foreach (var item in Model)
+{
+    <li class="minicart-product">
+        <a class="product-item_remove" href="#">
+            <i class="pe-7s-close"
+               data-tippy="Remove"
+               data-tippy-inertia="true"
+               data-tippy-animation="shift-away"
+               data-tippy-delay="50"
+               data-tippy-arrow="true"
+               data-tippy-theme="sharpborder"></i>
+        </a>
+        <a href="single-product-variable.html"
+           class="product-item_img">
+            <img class="img-full"
+                 src="~/assets/images/website-images/@item.Product.Image"
+                 alt="Product Image" />
+        </a>
+        <div class="product-item_content">
+            <a class="product-item_title"
+               href="single-product-variable.html">@item.Product.Name</a>
+            <span class="product-item_quantity">@item.Count x $@item.Product.Price</span>
+            <input value="@(item.Count*item.Product.Price)" class="total-price" hidden></input>
+        </div>
+    </li>
+
+}
